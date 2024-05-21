@@ -142,7 +142,7 @@ public class TextUtil {
         return material.getName().replace('_', ' ').toLowerCase();
     }
 
-    public static String getMaterialName(int materialId) {
+    public static String getMaterialName(String materialId) {
         return getMaterialName(Item.get(materialId));
     }
 

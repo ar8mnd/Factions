@@ -21,7 +21,7 @@ import cn.nukkit.Player;
 import cn.nukkit.Server;
 import cn.nukkit.block.Block;
 import cn.nukkit.entity.Entity;
-import cn.nukkit.entity.item.EntityPrimedTNT;
+import cn.nukkit.entity.item.EntityTnt;
 import cn.nukkit.entity.projectile.EntityProjectile;
 import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.EventPriority;
@@ -32,12 +32,10 @@ import cn.nukkit.event.entity.EntityDeathEvent;
 import cn.nukkit.event.entity.EntityExplodeEvent;
 import cn.nukkit.level.Location;
 import cn.nukkit.level.Position;
-import cn.nukkit.potion.Effect;
+import cn.nukkit.math.Vector3;
 
 public class FactionsEntityListener implements Listener {
-	private static final Set<Integer> badPotionEffects = new LinkedHashSet<Integer>(
-			Arrays.asList(Effect.BLINDNESS, Effect.CONFUSION, Effect.HARMING, Effect.HUNGER, Effect.POISON,
-					Effect.SLOWNESS, Effect.MINING_FATIGUE, Effect.WEAKNESS, Effect.WITHER));
+
 	public P p;
 
 	public FactionsEntityListener(P p) {
@@ -178,7 +176,7 @@ public class FactionsEntityListener implements Listener {
 		// // ghast fireball which needs prevention
 		// event.setCancelled(true);
 		// }
-		if ((boomer instanceof EntityPrimedTNT /*
+		if ((boomer instanceof EntityTnt /*
 												 * || boomer instanceof
 												 * ExplosiveMin
 												 */) && ((faction.isNone() && Conf.wildernessBlockTNT
@@ -187,7 +185,7 @@ public class FactionsEntityListener implements Listener {
 				|| (faction.isWarZone() && Conf.warZoneBlockTNT) || (faction.isSafeZone() && Conf.safeZoneBlockTNT))) {
 			// TNT which needs prevention
 			event.setCancelled(true);
-		} else if ((boomer instanceof EntityPrimedTNT /*
+		} else if ((boomer instanceof EntityTnt /*
 														 * || boomer instanceof
 														 * ExplosiveMinecart
 														 */) && Conf.handleExploitTNTWaterlog) {
@@ -208,29 +206,36 @@ public class FactionsEntityListener implements Listener {
 				targets.add(center.getLevel().getBlock(center.add(0, -1, 0)));
 				targets.add(center.getLevel().getBlock(center.add(1, 0, 0)));
 				targets.add(center.getLevel().getBlock(center.add(-1, 0, 0)));
-				for (Block target : targets) {
-					int id = target.getId();
-					// ignore air, bedrock, water, lava, obsidian, enchanting
-					// table, etc.... too bad we can't get a blast resistance
-					// value through Bukkit yet
-					if (id != 0 && (id < 7 || id > 11) && id != 49 && id != 90 && id != 116 && id != 119 && id != 120
-							&& id != 130)
-						// target.breakNaturally();
-						target.getLevel().setBlockIdAt(target.getFloorX(), target.getFloorY(), target.getFloorZ(),
-								Block.AIR);
 
+				for (Block target : targets) {
+					String id = target.getId();
+
+					// Игнорировать air, bedrock, water, lava, obsidian, enchanting table, etc.
+					if (!id.equals("minecraft:air") &&
+							!id.equals("minecraft:bedrock") &&
+							!id.equals("minecraft:water") &&
+							!id.equals("minecraft:lava") &&
+							!id.equals("minecraft:obsidian") &&
+							!id.equals("minecraft:enchanting_table") &&
+							!id.equals("minecraft:end_portal") &&
+							!id.equals("minecraft:end_portal_frame") &&
+							!id.equals("minecraft:dragon_egg") &&
+							!id.equals("minecraft:nether_portal")) {
+
+						loc.getLevel().setBlock(
+								new Vector3(target.getFloorX(), target.getFloorY(), target.getFloorZ()),
+								Block.get(Block.AIR)
+						);
+					}
 				}
 			}
 		}
 	}
 
 	private boolean isLiquid(Block block) {
-		int id = block.getId();
-		if (id == Block.WATER || id == Block.STILL_WATER || id == Block.LAVA || id == Block.STILL_LAVA) {
-			return true;
-		}
-		return false;
-	}
+		String id = block.getId();
+        return id.equals(Block.WATER) || id.equals(Block.LAVA);
+    }
 
 	// mainly for flaming arrows; don't want allies or people in safe zones to
 	// be ignited even after damage event is cancelled

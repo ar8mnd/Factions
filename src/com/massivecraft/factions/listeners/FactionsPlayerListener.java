@@ -101,7 +101,7 @@ public class FactionsPlayerListener implements Listener {
         FPlayer me = FPlayers.i.get(name);
         if (me.isAdminBypassing()) return true;
 
-        int material = block.getId();
+        String material = block.getId();
         FLocation loc = new FLocation(block);
         Faction otherFaction = Board.getFactionAt(loc);
 
@@ -124,7 +124,7 @@ public class FactionsPlayerListener implements Listener {
         // You may use any block unless it is another faction's territory...
         if (rel.isNeutral() || (rel.isEnemy() && Conf.territoryEnemyProtectMaterials) || (rel.isAlly() && Conf.territoryAllyProtectMaterials)) {
             if (!justCheck)
-                me.msg("<b>You can't %s <h>%s<b> in the territory of <h>%s<b>.", (material == Block.FARMLAND ? "trample" : "use"), TextUtil.getMaterialName(material), otherFaction.getTag(myFaction));
+                me.msg("<b>You can't %s <h>%s<b> in the territory of <h>%s<b>.", (material == Block.FARMLAND ? "trample" : "use"), TextUtil.getMaterialName(Item.get(material)), otherFaction.getTag(myFaction));
 
             return false;
         }
@@ -132,7 +132,7 @@ public class FactionsPlayerListener implements Listener {
         // Also cancel if player doesn't have ownership rights for this claim
         if (Conf.ownedAreasEnabled && Conf.ownedAreaProtectMaterials && !otherFaction.playerHasOwnershipRights(me, loc)) {
             if (!justCheck)
-                me.msg("<b>You can't use <h>%s<b> in this territory, it is owned by: %s<b>.", TextUtil.getMaterialName(material), otherFaction.getOwnerListString(loc));
+                me.msg("<b>You can't use <h>%s<b> in this territory, it is owned by: %s<b>.", TextUtil.getMaterialName(Item.get(material)), otherFaction.getOwnerListString(loc));
 
             return false;
         }
@@ -397,23 +397,25 @@ public class FactionsPlayerListener implements Listener {
 
         me.getPower();  // update power, so they won't have gained any while dead
 
-        Location home = me.getFaction().getHome();
-        if
-                (
-                Conf.homesEnabled
-                        &&
-                        Conf.homesTeleportToOnDeath
-                        &&
-                        home != null
-                        &&
-                        (
-                                Conf.homesRespawnFromNoPowerLossWorlds
-                                        ||
-                                        !Conf.worldsNoPowerLoss.contains(event.getPlayer().getLevel().getName())
-                        )
-                ) {
-            event.setRespawnPosition(home);
-        }
+        // PASSED
+
+//        Pair home = me.getFaction().getHome();
+//        if
+//                (
+//                Conf.homesEnabled
+//                        &&
+//                        Conf.homesTeleportToOnDeath
+//                        &&
+//                        home != null
+//                        &&
+//                        (
+//                                Conf.homesRespawnFromNoPowerLossWorlds
+//                                        ||
+//                                        !Conf.worldsNoPowerLoss.contains(event.getPlayer().getLevel().getName())
+//                        )
+//                ) {
+//            event.setRespawnPosition(home);
+//        }
     }
 
     // For some reason onPlayerInteract() sometimes misses bucket events depending on distance (something like 2-3 blocks away isn't detected),

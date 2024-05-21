@@ -217,10 +217,10 @@ public class Conf {
 
     public static boolean pistonProtectionThroughDenyBuild = true;
     //TODO Blocks are not enums they are static ints needs a large rewrite
-    public static Set<Integer> territoryProtectedMaterials = new HashSet<>();
-    public static Set<Integer> territoryDenyUseageMaterials = new HashSet<>();
-    public static Set<Integer> territoryProtectedMaterialsWhenOffline = new HashSet<>();
-    public static Set<Integer> territoryDenyUseageMaterialsWhenOffline = new HashSet<>();
+    public static Set<String> territoryProtectedMaterials = new HashSet<>();
+    public static Set<String> territoryDenyUseageMaterials = new HashSet<>();
+    public static Set<String> territoryProtectedMaterialsWhenOffline = new HashSet<>();
+    public static Set<String> territoryDenyUseageMaterialsWhenOffline = new HashSet<>();
 
     public static transient Set<Integer> safeZoneNerfedCreatureTypes = new HashSet<>();
 
@@ -297,7 +297,7 @@ public class Conf {
 
     static {
         baseCommandAliases.add("f");
-
+//        territoryProtectedMaterials.add(Block.);
         territoryEnemyDenyCommands.add("home");
         territoryEnemyDenyCommands.add("sethome");
         territoryEnemyDenyCommands.add("spawn");
@@ -305,29 +305,29 @@ public class Conf {
         territoryEnemyDenyCommands.add("tpaccept");
         territoryEnemyDenyCommands.add("tpa");
 
-        territoryProtectedMaterials.add(Block.WOOD_DOOR_BLOCK);
-        territoryProtectedMaterials.add(Block.IRON_DOOR_BLOCK);
+        territoryProtectedMaterials.add(Block.WOODEN_DOOR);
+        territoryProtectedMaterials.add(Block.IRON_DOOR);
         territoryProtectedMaterials.add(Block.TRAPDOOR);
         territoryProtectedMaterials.add(Block.IRON_TRAPDOOR);
         territoryProtectedMaterials.add(Block.FENCE_GATE);
-        territoryProtectedMaterials.add(Block.FENCE_GATE_SPRUCE);
-        territoryProtectedMaterials.add(Block.FENCE_GATE_JUNGLE);
-        territoryProtectedMaterials.add(Block.FENCE_GATE_DARK_OAK);
-        territoryProtectedMaterials.add(Block.FENCE_GATE_ACACIA);
+        territoryProtectedMaterials.add(Block.SPRUCE_FENCE_GATE);
+        territoryProtectedMaterials.add(Block.JUNGLE_FENCE_GATE);
+        territoryProtectedMaterials.add(Block.DARK_OAK_FENCE_GATE);
+        territoryProtectedMaterials.add(Block.ACACIA_FENCE_GATE);
         territoryProtectedMaterials.add(Block.CHEST);
         territoryProtectedMaterials.add(Block.FURNACE);
-        territoryProtectedMaterials.add(Block.BURNING_FURNACE);
+        territoryProtectedMaterials.add(Block.BLAST_FURNACE);
         territoryProtectedMaterials.add(Block.DISPENSER);
         territoryProtectedMaterials.add(Block.JUKEBOX);
-        territoryProtectedMaterials.add(Block.BREWING_STAND_BLOCK);
-        territoryProtectedMaterials.add(Block.ENCHANTMENT_TABLE);
-        territoryProtectedMaterials.add(Block.CAULDRON_BLOCK);
+        territoryProtectedMaterials.add(Block.BREWING_STAND);
+        territoryProtectedMaterials.add(Block.ENCHANTING_TABLE);
+        territoryProtectedMaterials.add(Block.CAULDRON);
         territoryProtectedMaterials.add(Block.FARMLAND);
         territoryProtectedMaterials.add(Block.BEACON);
         territoryProtectedMaterials.add(Block.ANVIL);
         territoryProtectedMaterials.add(Block.TRAPPED_CHEST);
         territoryProtectedMaterials.add(Block.DROPPER);
-        territoryProtectedMaterials.add(Block.HOPPER_BLOCK);
+        territoryProtectedMaterials.add(Block.HOPPER);
 
         territoryDenyUseageMaterials.add(Item.FLINT_AND_STEEL);
         territoryDenyUseageMaterials.add(Item.BUCKET);
@@ -335,39 +335,39 @@ public class Conf {
         territoryDenyUseageMaterials.add(Item.NETHERITE_HOE);
         territoryDenyUseageMaterials.add(Item.DIAMOND_HOE);
         territoryDenyUseageMaterials.add(Item.IRON_HOE);
-        territoryDenyUseageMaterials.add(Item.GOLD_HOE);
+        territoryDenyUseageMaterials.add(Item.GOLDEN_HOE);
         territoryDenyUseageMaterials.add(Item.STONE_HOE);
         territoryDenyUseageMaterials.add(Item.WOODEN_HOE);
         territoryDenyUseageMaterials.add(Item.NETHERITE_SHOVEL);
         territoryDenyUseageMaterials.add(Item.DIAMOND_SHOVEL);
         territoryDenyUseageMaterials.add(Item.IRON_SHOVEL);
-        territoryDenyUseageMaterials.add(Item.GOLD_SHOVEL);
+        territoryDenyUseageMaterials.add(Item.GOLDEN_SHOVEL);
         territoryDenyUseageMaterials.add(Item.STONE_SHOVEL);
         territoryDenyUseageMaterials.add(Item.WOODEN_SHOVEL);
 
-        territoryProtectedMaterialsWhenOffline.add(Block.WOOD_DOOR_BLOCK);
-        territoryProtectedMaterialsWhenOffline.add(Block.IRON_DOOR_BLOCK);
+        territoryProtectedMaterialsWhenOffline.add(Block.WOODEN_DOOR);
+        territoryProtectedMaterialsWhenOffline.add(Block.IRON_DOOR);
         territoryProtectedMaterialsWhenOffline.add(Block.TRAPDOOR);
         territoryProtectedMaterialsWhenOffline.add(Block.IRON_TRAPDOOR);
         territoryProtectedMaterialsWhenOffline.add(Block.FENCE_GATE);
-        territoryProtectedMaterialsWhenOffline.add(Block.FENCE_GATE_SPRUCE);
-        territoryProtectedMaterialsWhenOffline.add(Block.FENCE_GATE_JUNGLE);
-        territoryProtectedMaterialsWhenOffline.add(Block.FENCE_GATE_DARK_OAK);
-        territoryProtectedMaterialsWhenOffline.add(Block.FENCE_GATE_ACACIA);
+        territoryProtectedMaterialsWhenOffline.add(Block.SPRUCE_FENCE_GATE);
+        territoryProtectedMaterialsWhenOffline.add(Block.JUNGLE_FENCE_GATE);
+        territoryProtectedMaterialsWhenOffline.add(Block.DARK_OAK_FENCE_GATE);
+        territoryProtectedMaterialsWhenOffline.add(Block.ACACIA_FENCE_GATE);
         territoryProtectedMaterialsWhenOffline.add(Block.CHEST);
         territoryProtectedMaterialsWhenOffline.add(Block.FURNACE);
-        territoryProtectedMaterialsWhenOffline.add(Block.BURNING_FURNACE);
+        territoryProtectedMaterialsWhenOffline.add(Block.BLAST_FURNACE);
         territoryProtectedMaterialsWhenOffline.add(Block.DISPENSER);
         territoryProtectedMaterialsWhenOffline.add(Block.JUKEBOX);
-        territoryProtectedMaterialsWhenOffline.add(Block.BREWING_STAND_BLOCK);
-        territoryProtectedMaterialsWhenOffline.add(Block.ENCHANTMENT_TABLE);
-        territoryProtectedMaterialsWhenOffline.add(Block.CAULDRON_BLOCK);
+        territoryProtectedMaterialsWhenOffline.add(Block.BREWING_STAND);
+        territoryProtectedMaterialsWhenOffline.add(Block.ENCHANTING_TABLE);
+        territoryProtectedMaterialsWhenOffline.add(Block.CAULDRON);
         territoryProtectedMaterialsWhenOffline.add(Block.FARMLAND);
         territoryProtectedMaterialsWhenOffline.add(Block.BEACON);
         territoryProtectedMaterialsWhenOffline.add(Block.ANVIL);
         territoryProtectedMaterialsWhenOffline.add(Block.TRAPPED_CHEST);
         territoryProtectedMaterialsWhenOffline.add(Block.DROPPER);
-        territoryProtectedMaterialsWhenOffline.add(Block.HOPPER_BLOCK);
+        territoryProtectedMaterialsWhenOffline.add(Block.HOPPER);
 
         territoryDenyUseageMaterialsWhenOffline.add(Item.FIRE_CHARGE);
         territoryDenyUseageMaterialsWhenOffline.add(Item.FLINT_AND_STEEL);
@@ -375,13 +375,13 @@ public class Conf {
         territoryDenyUseageMaterialsWhenOffline.add(Item.NETHERITE_HOE);
         territoryDenyUseageMaterialsWhenOffline.add(Item.DIAMOND_HOE);
         territoryDenyUseageMaterialsWhenOffline.add(Item.IRON_HOE);
-        territoryDenyUseageMaterialsWhenOffline.add(Item.GOLD_HOE);
+        territoryDenyUseageMaterialsWhenOffline.add(Item.GOLDEN_HOE);
         territoryDenyUseageMaterialsWhenOffline.add(Item.STONE_HOE);
         territoryDenyUseageMaterialsWhenOffline.add(Item.WOODEN_HOE);
         territoryDenyUseageMaterialsWhenOffline.add(Item.NETHERITE_SHOVEL);
         territoryDenyUseageMaterialsWhenOffline.add(Item.DIAMOND_SHOVEL);
         territoryDenyUseageMaterialsWhenOffline.add(Item.IRON_SHOVEL);
-        territoryDenyUseageMaterialsWhenOffline.add(Item.GOLD_SHOVEL);
+        territoryDenyUseageMaterialsWhenOffline.add(Item.GOLDEN_SHOVEL);
         territoryDenyUseageMaterialsWhenOffline.add(Item.STONE_SHOVEL);
         territoryDenyUseageMaterialsWhenOffline.add(Item.WOODEN_SHOVEL);
 
