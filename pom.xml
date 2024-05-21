@@ -6,7 +6,7 @@
 
 	<groupId>com.massivecraft</groupId>
 	<artifactId>Factions</artifactId>
-	<version>1.8.0-Nukkit</version>
+	<version>1.8.0-PowerNukkiX</version>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<finalName>Factions</finalName>
@@ -25,23 +25,27 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.1</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>21</source>
+					<target>21</target>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
 	<repositories>
 		<repository>
-			<id>nukkitx</id>
-			<url>https://repo.nukkitx.com/main/</url>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+		<repository>
+			<id>opencollab-repository-maven-snapshots</id>
+			<url>https://repo.opencollab.dev/maven-snapshots</url>
 		</repository>
 	</repositories>
 	<dependencies>
 		<dependency>
-			<groupId>cn.nukkit</groupId>
-			<artifactId>nukkit</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<groupId>com.github.PowerNukkitX</groupId>
+			<artifactId>PowerNukkitX</artifactId>
+			<version>master-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
