@@ -1,6 +1,6 @@
 name: Factions
 version: "${pom.version}"
-api: ["1.0.0"]
+api: ["2.0.0"]
 main: com.massivecraft.factions.P
 authors: [Olof Larsson, Brett Flannigan]
 commands:
